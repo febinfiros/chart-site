@@ -1,0 +1,30 @@
+{% extends 'user\base_u.html' %}
+
+{% load static %}
+
+{% block title %} ChartSite - Logout {% endblock %}
+
+{% block content %}
+  <div class="container mb-5" style="max-width: 470px;">  
+    <div class="card mt-5 pb-2">
+        <div class="card-header border-0 p-4" style="background-color: #001f48;">
+          <div class="d-flex brand justify-content-center">
+            <h2 style="color:rgb(253, 78, 78);">Cha</h2>
+            <h2 style="color: rgb(121, 121, 250);">rtS</h2>
+            <h2 style="color: rgb(255, 255, 89);">ite</h2>
+          </div>        
+          <div class="mt-4">
+            <h4 class="text-white text-center">Logged out</h4>        
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="d-flex mt-3 mb-3 p-3">
+            <h5 class="">You are now logged out.</h5>
+          </div>
+          <a class="text-decoration-none p-2" href="{% url 'login' %}">
+            Login again
+          </a>
+        </div>
+      </div>
+  </div>
+{% endblock %}

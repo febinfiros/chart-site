@@ -1,0 +1,40 @@
+{% extends 'user/base_u.html' %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %} Password reset - ChartSite {% endblock %}
+
+{% block content %}
+  <div class="container mb-5" style="max-width: 490px;">
+    <div class="card mt-5">
+        <div class="card-header border-0 p-4" style="background-color: #001f48;">
+          <div class="d-flex brand justify-content-center">
+            <h2 style="color:rgb(253, 78, 78);">Cha</h2>
+            <h2 style="color: rgb(121, 121, 250);">rtS</h2>
+            <h2 style="color: rgb(255, 255, 89);">ite</h2>
+          </div>
+          <div class="mt-4">
+            <h4 class="text-white text-center">Delete Account</h4>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="p-2">
+            Deleting {{ request.user.username }} will remove the account and
+            all data related to this account permanently.
+          </p>
+          <p class="p-2">
+            Are you sure you want to delete this account?
+          </p>
+          <form class="" method="post">
+            <div class="d-flex mt-5 p-2 align-content-center">
+              <a class="ms-auto btn second-btn border text-decoration-none" href="{% url 'profile' %}">
+                Go back
+              </a>
+              <button class="btn btn-danger ms-2" type="submit">Delete Account</button>
+            </div>
+          </form>
+        </div>
+      </div>
+  </div>
+{% endblock %}

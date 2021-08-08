@@ -1,0 +1,139 @@
+{% extends 'chartapp\base.html' %}
+
+{% load static %}
+
+{% block content %}
+  <div class="container mt-4" style="max-width: 1140px;">
+    <div class="card">
+      <div class="card-header p-4 mb-1 d-flex bg-white pb-2">
+        <a href="{% url 'project-charts' pk=object.parentproject.id %}">
+          <button class="btn second-btn border pe-2 ps-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+            </svg>
+          </button>
+        </a>
+        <h3 class="pt-1 ps-3">{{ object.name }}</h3>
+      </div>
+      <div class="card-body">
+        <div class="p-4" id="canvas-div">
+          <canvas height="500" id="canvas"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container mt-3 mb-5" style="max-width: 1140px;">
+    <div class="card">
+      <div class="card-header p-4 mb-1 d-flex bg-white pb-2">          
+        <h4 class="">Edit</h4>
+        <div class="ms-auto">
+          <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#saveModal">
+            Save
+          </button>
+        </div>
+      </div>
+      <div class="card-body p-0">
+        <div class="radio-div p-5 pt-3 pb-3">
+          <h5>Type</h5>
+          <input type="radio" id="radio1" value="bar" name="chart-type" />
+          <label for="radio1" class="p-2">
+            <div class="btn btn-outline-primary">
+              <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-bar-chart-line-fill" viewBox="0 0 16 16">
+                <path d="M11 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h1V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7h1V2z"/>
+              </svg>
+            </div>
+            <label class="text-center" style="display: block;">Bar</label>
+          </label>
+          <input type="radio" id="radio2" value="pie" name="chart-type" />
+          <label for="radio2" class="p-2">
+            <div class="btn btn-outline-primary">
+              <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-pie-chart-fill" viewBox="0 0 16 16">
+                <path d="M15.985 8.5H8.207l-5.5 5.5a8 8 0 0 0 13.277-5.5zM2 13.292A8 8 0 0 1 7.5.015v7.778l-5.5 5.5zM8.5.015V7.5h7.485A8.001 8.001 0 0 0 8.5.015z"/>
+              </svg>
+            </div>
+            <label class="text-center" style="display: block;">Pie</label>
+          </label>
+          <input type="radio" id="radio3" value="doughnut" name="chart-type" />
+          <label for="radio3" class="p-2">
+            <div class="btn btn-outline-primary">
+              <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-record-circle-fill" viewBox="0 0 16 16">
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-8 3a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+              </svg>
+            </div>
+            <label class="text-center" style="display: block;">Doughnut</label>
+          </label>
+          <input type="radio" id="radio4" value="line" name="chart-type" />
+          <label for="radio4" class="p-2">
+            <div class="btn btn-outline-primary">
+              <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-graph-up" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M0 0h1v15h15v1H0V0zm10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4.9l-3.613 4.417a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61L13.445 4H10.5a.5.5 0 0 1-.5-.5z"/>
+              </svg>  
+            </div>
+            <label class="text-center" style="display: block;">Line</label>
+          </label>
+        </div>
+        <div class="p-5 pt-3 pb-3">
+          <h5 class="p-2 ps-0">Content</h5>
+          <div style="height: 300px; max-height: 300px;" class="border-right overflow-auto">
+            <table class="table table-bordered">
+              <thead>  
+                <tr>
+                  <th class="text-center" scope="col">#</th>
+                  <th scope="col">Label</th>
+                  <th scope="col">Value</th>
+                  <th scope="col">Color</th>
+                </tr>
+              </thead>
+              <tbody id="form-parent">
+                <tr class='form-chart'>
+                  <th class="numbering text-center" scope="row"></th>
+                  <td><input class="label-form form-c" type="text" name="" value=""></td>
+                  <td><input class="data-form form-c" type="text" name="" value=""></td>
+                  <td class="d-flex">
+                    <input class="color-form form-c" type="text" name="" value="">
+                    <input style="height:20px; width: 20px;" class="ms-auto border-0 color-i m-0 p-0" type="color">
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="d-flex justify-content-end">
+            <button id="add-row" class="btn btn-primary mt-4">+ Add row</button>
+  
+          </div>
+        </div>  
+      </div>
+      <div class="card-footer bg-white p-3">
+        <div class="d-flex justify-content-end">
+          <button id="render" class="btn btn-primary">Render</button>
+        </div>
+      </div>
+    </div> 
+  </div>   
+  <div class="modal" id="saveModal">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header fs-5" id="title">Save Chart</div>
+        <div class="modal-body">
+          <p id="content">Save this chart?</p>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" id="save-btn" data-bs-dismiss="modal">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script type="text/javascript">
+    const objectLabel = '{{ object.label }}'
+    const objectType = '{{ object.type }}'
+    const objectColor = '{{ object.color }}'
+    const objectData = '{{ object.data_list }}'
+    const objectInnerLabels = '{{ object.inner_labels }}'
+    const objectId = '{{ object.id }}'
+
+    const url = "{% url 'update-chart' %}"
+  </script>
+  <script src="{% static 'chartapp\chartDetail.js' %}"></script>
+  <script src="{% static 'chartapp\colorPicker.js' %}"></script>
+{% endblock %}

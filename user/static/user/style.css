@@ -1,0 +1,70 @@
+* {
+  font-family: 'Roboto', sans-serif;
+}
+.card {
+  border-radius: 0px;
+  box-shadow: 0.01rem 0.1rem 0.095rem 0.1rem #6c757d2b;
+  border: none;
+}
+.brand h2 {
+  font-family: tw cen mt;
+  margin: 0%;
+}
+.btn {
+  border-radius: 0px;
+  padding: 8px 15px;
+}
+.btn:focus {
+  box-shadow: none;
+  outline: none;
+}
+.btn-primary {
+  background-color: rgb(49, 49, 255);
+  border-color: rgb(49, 49, 255);
+}
+.second-btn {
+  color: rgb(0, 0, 255);
+  font-weight: 600;
+}
+.second-btn:hover {
+  color: rgb(103, 103, 252);
+}
+.form-control {
+  border-radius: 0px;
+  padding: 4px 10px;
+}
+.form-control:hover {
+  border-color: rgb(123, 123, 255);
+}
+.form-control:focus {
+  box-shadow: none;
+  border-color: rgb(123, 123, 255);
+}
+form label {
+  color: #868686;
+}
+form label .asteriskField {
+  display: none;
+}
+form small {
+  display: none;
+}
+dl, ol, ul {
+  margin-top: 0;
+  margin-bottom: 0px;
+}
+ol, ul {
+  padding-left: 2rem;
+}
+.alert-primary {
+  border-radius: 0px;
+}
+a {
+  color: #868686;
+}
+a:hover {
+  color: rgb(0, 0, 255);
+}
+th {
+  font-weight: 400;  
+}
