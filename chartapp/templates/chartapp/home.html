@@ -1,23 +1,56 @@
 {% extends 'chartapp/base.html' %}
 
+{% load static %}
+
 {% block title %} ChartSite {% endblock %}
 
 {% block content %}
-  <div class="d-flex justify-content-center align-items-center back">
-      <h1 class="me-auto text-white">
+  <div class="d-flex justify-content-center back">
+    <div class="mt-5">
+      <h1 class="text-white mt-5">
         Create graphs and visualize data
       </h1>
-      <button class="ms-auto btn second-btn border pe-2 ps-2 bg-white">
-        <a href="{% url 'tryout' %}" class="text-decoration-none">
-          Tryout the demo
-        </a>
-      </button>
+      <div class="d-flex justify-content-center mt-4">
+        <button class="btn second-btn p-2 bg-white">
+          <a href="{% url 'tryout' %}" class="text-decoration-none" style="color: rgb(46 46 214);">
+            Tryout the demo
+          </a>
+        </button>
+      </div>
+      <div class="mt-5 shadow">
+        <img src="{% static 'chartapp/Capture.PNG' %}" height="300" width='600'>
+      </div>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center align-items-center mt-5">
+    <div class="mt-5 mb-5">
+      <h2 class="mt-5">
+        Create account today
+      </h2>
+      <div class="d-flex justify-content-center mt-5">
+        <button class="btn btn-primary me-3">
+          <a href="{% url 'signup' %}" class="text-decoration-none text-white">
+            Create account
+          </a>
+        </button>
+        <button class="btn second-btn p-2 border">
+          <a href="{% url 'login' %}" class="text-decoration-none">
+            Already have an account
+          </a>
+        </button>
+      </div>
+    </div>
   </div>
   <style>
+    html {
+      height: 100%;
+    }
+    body {
+      height: 100%;
+    }
     .back {
       background-color: rgb(46 46 214);
-      position: absolute;
-      height: 90%;
+      height: 80%;
       width: 100%;
     }
   </style>

@@ -12,7 +12,7 @@ function createList(objectList) {
     let cln = box.cloneNode(true);
     cln.style.display = 'flex';
     cln.getElementsByTagName('a')[0].innerHTML = objectList[x]['fields']['name'];
-    cln.getElementsByTagName('a')[0].href = location.href.split('/')[0] + 'projects/' + objectList[x]['pk']
+    cln.getElementsByTagName('a')[0].href = location.href.split('/')[0] + objectList[x]['pk']
     cln.getElementsByClassName('btn-outline-primary')[0].value = objectList[x]['pk'];
     cln.getElementsByClassName('btn-outline-danger')[0].value = objectList[x]['pk'];
     parentBox.appendChild(cln);
