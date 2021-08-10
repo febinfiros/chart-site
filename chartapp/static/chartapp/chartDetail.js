@@ -31,7 +31,7 @@ formChart.remove()
 function loadChart(array1, array2, array3, type) {
   for (let i = 0; i < array1.length; i++){
     let cln = formChart.cloneNode(true);
-    cln.getElementsByClassName('numbering')[0].innerHTML = i;
+    cln.getElementsByClassName('numbering')[0].innerHTML = i + 1;
     cln.getElementsByClassName('label-form')[0].value = array1[i];
     cln.getElementsByClassName('data-form')[0].value = array2[i];
     cln.getElementsByClassName('color-form')[0].value = array3[i];
@@ -151,7 +151,7 @@ function saveChart() {
   };
 
   chartType = getType()
-  
+
   data = {
     'type': chartType,
     'array1': labelArray.slice(0, labelArray.length - 1),

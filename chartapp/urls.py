@@ -3,7 +3,9 @@ from .views import ProjectListView, ChartListView, ChartDetailView
 from . import views
 
 urlpatterns = [
-    path('', ProjectListView.as_view(), name='all-projects'),
+    path('', views.home, name='home'),
+    path('demo/', views.tryout, name='tryout'),
+    path('projects/', ProjectListView.as_view(), name='all-projects'),
     path('projects/<int:pk>', ChartListView.as_view(), name='project-charts'),
     path('projects/chart/<int:pk>', ChartDetailView.as_view(), name='chart'),
     path('projects/control', views.control_view, name="control-project"),

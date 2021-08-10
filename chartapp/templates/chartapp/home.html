@@ -1,0 +1,24 @@
+{% extends 'chartapp/base.html' %}
+
+{% block title %} ChartSite {% endblock %}
+
+{% block content %}
+  <div class="d-flex justify-content-center align-items-center back">
+      <h1 class="me-auto text-white">
+        Create graphs and visualize data
+      </h1>
+      <button class="ms-auto btn second-btn border pe-2 ps-2 bg-white">
+        <a href="{% url 'tryout' %}" class="text-decoration-none">
+          Tryout the demo
+        </a>
+      </button>
+  </div>
+  <style>
+    .back {
+      background-color: rgb(46 46 214);
+      position: absolute;
+      height: 90%;
+      width: 100%;
+    }
+  </style>
+{% endblock %}
