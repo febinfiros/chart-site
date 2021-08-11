@@ -7,7 +7,7 @@
   border: none;
 }
 .brand h2 {
-  font-family: tw cen mt;
+  font-family: font-family: 'Righteous', cursive;;
   margin: 0%;
 }
 .btn {
@@ -66,5 +66,5 @@ a:hover {
   color: rgb(0, 0, 255);
 }
 th {
-  font-weight: 400;  
+  font-weight: 400;
 }
