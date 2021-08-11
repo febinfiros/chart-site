@@ -109,3 +109,23 @@ a {
   background-color: rgb(49, 49, 255);
   border-color: rgb(49, 49, 255);
 }
+@media (max-width: 600px) {
+  .container {
+    padding: 0px;
+  }
+  #canvas-div {
+    padding: 5px!important;
+    height: 400px;
+  }
+  .radio-div {
+    padding-left: 15px!important;
+    padding-right: 15px!important;
+  }
+  .content-div {
+    padding-left: 15px!important;
+    padding-right: 15px!important;
+  }
+  .card-header {
+    padding: 20px!important;
+  }
+}
