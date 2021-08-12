@@ -114,8 +114,8 @@ a {
     padding: 0px;
   }
   #canvas-div {
-    padding: 5px!important;
-    height: 400px;
+    padding: 10px 5px!important;
+    height: 450px;
   }
   .radio-div {
     padding-left: 15px!important;
