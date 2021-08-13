@@ -99,7 +99,7 @@ input[type=radio]:checked + label .btn-outline-primary {
   color: rgb(49, 49, 255);
 }
 .navbar-brand h3 {
-  font-family: font-family: 'Righteous', cursive;;
+  font-family: 'Righteous', cursive;
   margin: 0%;
 }
 a {
@@ -127,5 +127,11 @@ a {
   }
   .card-header {
     padding: 10px!important;
+  }
+  #detail-table {
+    margin: 10px!important;
+  }
+  #title-name {
+    width: 100px!important;
   }
 }
